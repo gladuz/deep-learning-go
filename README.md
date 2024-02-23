@@ -1,14 +1,17 @@
-# Transformer Inference in Go from Scratch
+# Deep learning playground scripts in Go
 
 ## Overview
-I've built a Transformer inference code from scratch in Go, without relying on external dependencies. The inspiration? Well, let's just say [minGPT](https://github.com/karpathy/minGPT) had a hand in it 😉. But heads up, there might be a few bugs as it was a weekend project without too much attention (no pun intended) to detail.
+- `/tensor` Tensor implementation from scratch. Implementation of small Tensor model taken from [Pytorch internals](http://blog.ezyang.com/2019/05/pytorch-internals/). Supports `At(x,y)`, `View(...idx)` with arbitrary sizes.
+- `/simple_transformer` I've built a Transformer inference code from scratch in Go, without relying on external dependencies. The inspiration? Well, let's just say [minGPT](https://github.com/karpathy/minGPT) had a hand in it 😉. But heads up, there might be a few bugs as it was a weekend project without too much attention (no pun intended) to detail.
 
-## Features
-
-- Train a Transformer model in PyTorch on Iris dataset.
-- Export the model weights.
-- Perform inference in Go without external dependencies.
-
+## Features per folder
+- transformer
+    - Train a Transformer model in PyTorch on Iris dataset.
+    - Export the model weights.
+    - Perform inference in Go without external dependencies.
+- tensor
+    - Generic `Tensor` implementation with arbitrary sizes
+    - Testable code for `At, View, DimSlice` with the same underlying storage (like Pytorch)
 ## Requirements
 
 To run this project, you'll need:
@@ -31,9 +34,8 @@ To run this project, you'll need:
     pip install -r requirements.txt
     ```
 
-## Usage
 
-### Training the Transformer Model
+## Training the Transformer Model
 
 1. Navigate to the main directory:
 
@@ -50,4 +52,5 @@ go run simple_attn.go
 ```
 It will read the dataset, run prediction on samples and calculate the accuracy
 
-
+## Tensor implementation
+Tests are in `tensor/tensor_test.go` file. The correct results are taken from the pytorch implementation.
